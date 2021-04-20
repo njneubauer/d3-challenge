@@ -95,7 +95,7 @@ function renderYCircles(circlesGroup, textGroup, newYScale, chosenYAxis){
 }
 
 // function used for updating circles group with new tooltip
-function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup){
+function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup, textGroup){
     var xlabel;
 
     var percent = "%";
@@ -132,7 +132,12 @@ function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup){
         });
 
     circlesGroup.call(toolTip);
+    textGroup.call(toolTip);
     
+    textGroup.on("mouseover", function(data){
+        toolTip.show(data, this)
+    });
+
     // mouseover show data 
     circlesGroup.on("mouseover", function(data) {
         toolTip.show(data, this);
@@ -186,7 +191,7 @@ d3.csv(file).then(function(healthData, err){
 
     var circleG = chartGroup.append("g")
         .classed("chart-area", true);
-
+ 
     // append initial circles
     var circlesGroup = circleG.selectAll("g", "chart-area")
         .data(healthData)
@@ -196,7 +201,7 @@ d3.csv(file).then(function(healthData, err){
             .attr("cx", d => xLinearScale(d[chosenXAxis]))
             .attr("cy", d => yLinearScale(d[chosenYAxis]))
             .attr("r", 13);
-
+     
     var textGroup = circleG.selectAll("g", "chart-area")
         .data(healthData) 
         .enter()
@@ -205,7 +210,7 @@ d3.csv(file).then(function(healthData, err){
             .attr("y", d => yLinearScale(d[chosenYAxis])+5.5)
             .classed("stateText", true)
             .text(d=>d.abbr);
-           
+
     // Create group for x-axis labels
     var xLabelsGroup = chartGroup.append("g")
         .attr("transform", `translate(${width / 2}, ${height + 20})`);
@@ -258,7 +263,7 @@ d3.csv(file).then(function(healthData, err){
         .text("Lacks Healthcare(%)");
 
     // updateToolTip function above csv import
-    var circlesGroup = updateToolTip(chosenXAxis, chosenYAxis, circlesGroup);
+    var circlesGroup = updateToolTip(chosenXAxis, chosenYAxis, circlesGroup, textGroup);
 
     // x axis labels event listener
     xLabelsGroup.selectAll("text")
@@ -278,7 +283,7 @@ d3.csv(file).then(function(healthData, err){
                 circlesGroup = renderXCircles(circlesGroup, textGroup, xLinearScale, chosenXAxis);
 
                 // updates tooltips with new info
-                circlesGroup = updateToolTip(chosenXAxis, chosenYAxis, circlesGroup);
+                circlesGroup = updateToolTip(chosenXAxis, chosenYAxis, circlesGroup, textGroup);
 
                 // changes classes to change bold text
                 if (chosenXAxis === "age"){
@@ -336,7 +341,7 @@ d3.csv(file).then(function(healthData, err){
                 circlesGroup = renderYCircles(circlesGroup, textGroup, yLinearScale, chosenYAxis);
 
                 // updates tooltips with new info
-                circlesGroup = updateToolTip(chosenXAxis, chosenYAxis, circlesGroup);
+                circlesGroup = updateToolTip(chosenXAxis, chosenYAxis, circlesGroup, textGroup);
 
                 // changes classes to change bold text
                 if (chosenYAxis === "smokes"){
