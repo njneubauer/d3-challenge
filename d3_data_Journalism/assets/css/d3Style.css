@@ -28,11 +28,16 @@
   font-family: sans-serif;
   fill: #fff;
   text-anchor: middle;
+  font-size: 11pt;
 }
 
 .stateCircle {
   fill: #89bdd3;
-  stroke: #e3e3e3;
+  stroke: #e3e3e3; 
+}
+
+.stateCircle:hover {
+  stroke: #000;
 }
 
 .chart {
@@ -53,7 +58,7 @@
 }
 
 /* Mobile Rules */
-@media screen and (max-width: 530px) {
+@media screen and (max-width: 767px) {
   .stateText {
     display: none;
   }
