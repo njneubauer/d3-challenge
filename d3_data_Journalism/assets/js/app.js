@@ -132,19 +132,16 @@ function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup, textGroup){
         });
 
     circlesGroup.call(toolTip);
-    textGroup.call(toolTip);
-    
-    textGroup.on("mouseover", function(data){
-        toolTip.show(data, this)
-    });
 
     // mouseover show data 
     circlesGroup.on("mouseover", function(data) {
-        toolTip.show(data, this);
+        toolTip.show(data, this)
+        var circle = d3.select(this).style("stroke", "black");
       })
         // mouseout event hide data
         .on("mouseout", function(data) {
           toolTip.hide(data, this);
+          d3.select(this).style("stroke", "#e3e3e3");
         });
 
       return circlesGroup;
@@ -200,7 +197,7 @@ d3.csv(file).then(function(healthData, err){
             .classed("stateCircle", true)
             .attr("cx", d => xLinearScale(d[chosenXAxis]))
             .attr("cy", d => yLinearScale(d[chosenYAxis]))
-            .attr("r", 13);
+            .attr("r", 14);
      
     var textGroup = circleG.selectAll("g", "chart-area")
         .data(healthData) 

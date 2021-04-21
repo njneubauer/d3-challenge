@@ -40,6 +40,10 @@
   stroke: #000;
 }
 
+.stateText:hover{
+  display: none;
+}
+
 .chart {
   display: block;
   margin: 0;
