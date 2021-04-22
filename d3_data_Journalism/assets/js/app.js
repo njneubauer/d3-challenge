@@ -30,7 +30,7 @@ var chosenYAxis = "obesity";
 
 function xScale(healthData, chosenXAxis){
     var xLinearScale = d3.scaleLinear()
-    .domain([d3.min(healthData, d => d[chosenXAxis])*0.9,
+    .domain([d3.min(healthData, d => d[chosenXAxis])*0.95,
     d3.max(healthData, d => d[chosenXAxis])*1.1
     ])
     .range([0, width])
@@ -40,7 +40,7 @@ function xScale(healthData, chosenXAxis){
 
 function yScale(healthData, chosenYAxis){
     var yLinearScale = d3.scaleLinear()
-    .domain([d3.min(healthData, d => d[chosenYAxis])*0.86,
+    .domain([d3.min(healthData, d => d[chosenYAxis])*0.8,
     d3.max(healthData, d => d[chosenYAxis])*1.08
     ])
     .range([height, 0])
@@ -118,7 +118,7 @@ function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup, textGroup){
         ylabel = "Obesity:";
     }
     else if (chosenYAxis === "smokes"){
-        ylabel = "Smokes:";
+        ylabel = "Smoker:";
     }
     else {
         ylabel = "Lacks Healthcare:";
@@ -224,7 +224,7 @@ d3.csv(file).then(function(healthData, err){
         .attr("y", 40)
         .attr("value", "age") // value for event listener
         .classed("inactive", true)
-        .text("age(median)");
+        .text("Age(median)");
     var incomeLabel = xLabelsGroup.append("text")
         .attr("x", 0)
         .attr("y", 60)
@@ -250,7 +250,7 @@ d3.csv(file).then(function(healthData, err){
         .attr("dy", "1em")
         .attr("value", "smokes")//value for event listener
         .classed("inactive", true)
-        .text("Smokes(%)");
+        .text("Smoker(%)");
     var healthcareLabel = yLabelsGroup.append("text")
         .attr("y", 50 - margin.left)
         .attr("x", 0 - (height / 2))
