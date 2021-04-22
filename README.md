@@ -14,34 +14,34 @@
 
 # Analysis of Obesity
 
-## Poverty
+### Poverty
 * There may be a weak positive correlation between states that have higher poverity percentages also have higher obesity rates. More statistical analysis would be required to identify the significance for this correlation. 
 
-## Age
+### Age
 * There does not appear to be a strong correlation between obesity rates by age, but the dataset age range is only between 30 to 44. 
   - It appears that states known to have more outdoor recreational opportunities including UT, CA, CO, HI, have lower obesity rates despite the age range being from approximately 30-40 years of age.
 
-## Household Income
+### Household Income
 * There appears to be a correlation between obesity & household income. States with lower household income tend to have higher rates of obesity. 
 
 # Analysis of Smoking
 
-## Poverty 
+### Poverty 
 * There appears to be a weak positive correlation between smokers & poverty percentage. As the percentage of poverty by state increases so does their rates of smokers. 
 
-## Age
+### Age
 * There does appear to be a clear correlation between smokers and age. However, the states with the highest rates of smoking >22% have average ages between 36-41. 
 
-## Household Income
+### Household Income
 * There is a strong negative correlation between smokers and household income. Smoking rates increase as the household income decreases.
 
 # Analysis of Lacking Healthcare
 
-## Poverty
+### Poverty
 * There is a weak to moderate positive correlation between lacking healthcare and poverty. As the percentage of people that lack healthcare increase so does the percentage of poverty. 
 
-## Age
+### Age
 * There does not appear to be a significant correlation between age and lacking healthcare. 
 
-## Household Income
+### Household Income
 * There may be a weak negative  correlation between lacking healthcare and household income. As the household income decreases the percentage of people who lack healthcare appears to increase.
